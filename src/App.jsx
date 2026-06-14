@@ -147,7 +147,7 @@ const Styles = () => (
     .testimonials-left{}
     .testimonials-grid{display:flex;flex-direction:column;gap:1.5rem;}
     .testimonial-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:2.25rem;position:relative;}
-    .testimonial-card::before{content:'\201C';font-family:'Playfair Display',serif;font-size:6rem;line-height:1;color:rgba(200,16,46,0.25);position:absolute;top:0.5rem;right:1.5rem;pointer-events:none;}
+    .testimonial-card::before{content:'"';font-family:'Playfair Display',serif;font-size:6rem;line-height:1;color:rgba(200,16,46,0.25);position:absolute;top:0.5rem;right:1.5rem;pointer-events:none;}
     .t-stars{color:#C9973A;font-size:1rem;letter-spacing:2px;margin-bottom:1.25rem;}
     .t-text{font-size:0.95rem;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:1.75rem;}
     .t-author{display:flex;align-items:center;gap:0.875rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.08);}
