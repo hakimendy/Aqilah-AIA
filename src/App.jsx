@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 const WA = "https://wa.me/6738975927?text=Hi%20Aqilah%2C%20I%27d%20like%20to%20find%20out%20more%20about%20AIA%20insurance.";
 const FINANCE_URL = "https://bnd-tracker.netlify.app/";
 // Upload photo to imgbb.com and replace this URL:
-const PORTRAIT_URL = "https://i.ibb.co/BHp271f7/1760534840764.jpg";
+const PORTRAIT_URL = "https://i.ibb.co/XZm0FHYS/Gemini-Generated-Image-82rfft82rfft82rf.png";
 
 const Styles = () => (
   <style>{`
