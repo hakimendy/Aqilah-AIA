@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 const WA = "https://wa.me/6738975927?text=Hi%20Aqilah%2C%20I%27d%20like%20to%20find%20out%20more%20about%20AIA%20insurance.";
 const FINANCE_URL = "https://bnd-tracker.netlify.app/";
 // Upload photo to imgbb.com and replace this URL:
-const PORTRAIT_URL = "https://i.ibb.co/XZm0FHYS/Gemini-Generated-Image-82rfft82rfft82rf.png";
+const PORTRAIT_URL = "https://i.ibb.co/BHp271f7/1760534840764.jpg";
 
 const Styles = () => (
   <style>{`
@@ -142,15 +142,23 @@ const Styles = () => (
     .process-bullet{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:#fff;border:2px solid rgba(200,16,46,0.25);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:500;color:#C8102E;position:relative;z-index:1;}
     .process-body h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#1A1A2E;margin-bottom:0.35rem;}
     .process-body p{font-size:0.875rem;color:#4A5568;line-height:1.7;}
-    .testimonials-wrap{margin-top:3.5rem;display:flex;justify-content:center;}
-    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;width:100%;max-width:900px;}
-    .testimonial-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2.25rem;}
-    .t-stars{color:#C9973A;font-size:0.85rem;letter-spacing:1px;margin-bottom:1rem;}
-    .t-text{font-size:0.9rem;color:rgba(255,255,255,0.82);line-height:1.8;margin-bottom:1.5rem;}
-    .t-author{display:flex;align-items:center;gap:0.75rem;}
-    .t-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#C8102E,#C9973A);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#fff;flex-shrink:0;}
-    .t-name{font-weight:600;font-size:0.875rem;color:#fff;}
-    .t-role{font-size:0.75rem;color:rgba(255,255,255,0.5);}
+    /* TESTIMONIALS - side by side */
+    .testimonials-wrap{margin-top:3.5rem;display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center;}
+    .testimonials-left{}
+    .testimonials-grid{display:flex;flex-direction:column;gap:1.5rem;}
+    .testimonial-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:2.25rem;position:relative;}
+    .testimonial-card::before{content:'\201C';font-family:'Playfair Display',serif;font-size:6rem;line-height:1;color:rgba(200,16,46,0.25);position:absolute;top:0.5rem;right:1.5rem;pointer-events:none;}
+    .t-stars{color:#C9973A;font-size:1rem;letter-spacing:2px;margin-bottom:1.25rem;}
+    .t-text{font-size:0.95rem;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:1.75rem;}
+    .t-author{display:flex;align-items:center;gap:0.875rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.08);}
+    .t-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#C8102E,#C9973A);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:#fff;flex-shrink:0;}
+    .t-name{font-weight:600;font-size:0.9rem;color:#fff;}
+    .t-role{font-size:0.775rem;color:rgba(255,255,255,0.45);margin-top:2px;}
+    .t-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+    .t-stat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.25rem;}
+    .t-stat-num{font-family:'DM Mono',monospace;font-size:1.75rem;font-weight:500;color:#C8102E;line-height:1;}
+    .t-stat-label{font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;}
+    @media(max-width:960px){.testimonials-wrap{grid-template-columns:1fr;gap:2.5rem;}.t-stat-row{grid-template-columns:1fr 1fr;}}
     .faq-wrap{max-width:740px;margin:3.5rem auto 0;display:flex;flex-direction:column;gap:0.65rem;}
     .faq-item{border:1px solid rgba(200,16,46,0.12);border-radius:12px;overflow:hidden;background:#fff;}
     .faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;cursor:pointer;font-weight:600;font-size:0.925rem;font-family:'DM Sans',sans-serif;transition:color 0.2s;min-height:56px;gap:1rem;width:100%;background:none;border:none;text-align:left;color:#1A1A2E;}
@@ -625,8 +633,28 @@ export default function App() {
         <section className="section section-dark" id="testimonials" aria-labelledby="test-h2">
           <span className="eyebrow" style={{color:"rgba(200,16,46,0.8)"}}>Client Feedback</span>
           <h2 className="section-title light" id="test-h2">A Word From<br/>a <em style={{color:"#C8102E"}}>Real Client</em></h2>
-          <p className="section-sub light">Genuine feedback from someone who trusted Aqilah with what matters most.</p>
           <div className="testimonials-wrap">
+            <div className="testimonials-left">
+              <p className="section-sub light" style={{marginBottom:"2rem"}}>Genuine feedback from someone who trusted Aqilah with what matters most.</p>
+              <div className="t-stat-row">
+                <div className="t-stat">
+                  <div className="t-stat-num">100%</div>
+                  <div className="t-stat-label">Honest, no-pressure advice</div>
+                </div>
+                <div className="t-stat">
+                  <div className="t-stat-num">AIA</div>
+                  <div className="t-stat-label">Brunei's trusted insurer</div>
+                </div>
+                <div className="t-stat">
+                  <div className="t-stat-num">Free</div>
+                  <div className="t-stat-label">First consultation</div>
+                </div>
+                <div className="t-stat">
+                  <div className="t-stat-num">Fast</div>
+                  <div className="t-stat-label">WhatsApp response</div>
+                </div>
+              </div>
+            </div>
             <div className="testimonials-grid">
               {testimonials.map(t=>(
                 <article className="testimonial-card" key={t.name}>
@@ -634,7 +662,10 @@ export default function App() {
                   <p className="t-text">"{t.text}"</p>
                   <footer className="t-author">
                     <div className="t-avatar">{t.initials}</div>
-                    <div><div className="t-name">{t.name}</div><div className="t-role">{t.role}</div></div>
+                    <div>
+                      <div className="t-name">{t.name}</div>
+                      <div className="t-role">{t.role}</div>
+                    </div>
                   </footer>
                 </article>
               ))}
