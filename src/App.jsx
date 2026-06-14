@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 const WA = "https://wa.me/6738975927?text=Hi%20Aqilah%2C%20I%27d%20like%20to%20find%20out%20more%20about%20AIA%20insurance.";
 const FINANCE_URL = "https://bnd-tracker.netlify.app/";
 // ⬇️  Upload your photo to imgur.com or imgbb.com and paste the direct link here
-const PORTRAIT_URL = "https://i.imgur.com/placeholder.jpg";
+const PORTRAIT_URL = "https://ibb.co/CptN165q";
 
 /* ── SEO / META HEAD ── injected into <head> via useEffect */
 const SEOMeta = () => {
